@@ -8,6 +8,7 @@
 
 * [História](#História)
 * [Arquitetura Docker](#Arquitetura-Docker)
+* [Imagens](#Imagens)
 * [Referências](#Referências)
 
 ## História
@@ -80,6 +81,12 @@ Existem vários objetos no universo do Docker, os principais são:
 * Contêiner
 * Rede
 * Volume
+
+## Imagens
+
+Uma imagem Docker é um objeto com acesso somente de leitura com instruções necessárias para criar um container Docker. O mais comunm é uma imagem ser baseada em outras e adicionar personalizações, como por exemplo: criar uma imagem baseada na imagem do sistema operacional Ubuntu e fornecer instruções para instalar um servidor web como Nginx, uma aplicação como NestJs e executar esta aplicação.
+
+Embora já exista diversas imagens prontas e oficiais, ainda é possível criar suas próprias imagens. Para isso, a maneira mais fácil é usar um arquivo com o nome Dockerfile e descrever as etapas necessárias nele.
 
 ## Referências
 
