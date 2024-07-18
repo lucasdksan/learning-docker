@@ -9,6 +9,8 @@
 * [História](#História)
 * [Arquitetura Docker](#Arquitetura-Docker)
 * [Imagens](#Imagens)
+* [Containers](#Containers)
+* [Containerize an application](#Containerize-an-application)
 * [Referências](#Referências)
 
 ## História
@@ -87,6 +89,34 @@ Existem vários objetos no universo do Docker, os principais são:
 Uma imagem Docker é um objeto com acesso somente de leitura com instruções necessárias para criar um container Docker. O mais comunm é uma imagem ser baseada em outras e adicionar personalizações, como por exemplo: criar uma imagem baseada na imagem do sistema operacional Ubuntu e fornecer instruções para instalar um servidor web como Nginx, uma aplicação como NestJs e executar esta aplicação.
 
 Embora já exista diversas imagens prontas e oficiais, ainda é possível criar suas próprias imagens. Para isso, a maneira mais fácil é usar um arquivo com o nome Dockerfile e descrever as etapas necessárias nele.
+
+## Containers
+
+Um contêiner é uma instância executável e com permissão de alterações de uma imagem. É possível criar, iniciar, parar, mover e excluir um contêiner através da API do Docker ou CLI. Também podemos conectar um contêiner a uma ou mais redes, anexar armazenamento externo ou até mesmo criar uma nova imagem a partir do estado atual dele. 
+
+Um contêiner é iniciado sempre a partir de uma imagem e qualquer alteração em seu estado é perdida após ele ser parado de executar. Então caso queira persistir as suas alterações será necessário gravar em um volume anexado ou gerar uma nova imagem do seu contêiner.
+
+## Containerize an application
+
+A expressão Containerize an application significa empacotar uma aplicação em um container de software. Isso permite que a aplicação seja isolada do sistema operacional e do hardware subjacente, e possa ser facilmente movida e executada em diferentes ambientes sem comprometer sua funcionalidade. Containers são usados para garantir a consistência e a portabilidade da aplicação, facilitando a implantação, a manutenção e a escalabilidade.
+
+Muitas das vezes será necessário especificar além do sistema operacional, linguagem de programação e software também instalar outras dependências e realizar configurações iniciais necessárias que normalmente são esquecidas depois de um tempo que a aplicação já está funcionando em seu localhost ou produção.
+
+**Efêmeros**
+
+Os Containers Docker precisam ser efêmeros porque isso ajuda a garantir a integridade e a portabilidade da aplicação.
+
+Quando um container é projetado para ser efêmero, ele é criado e usado apenas para uma tarefa específica, e depois é descartado. Isso significa que, em caso de falha ou problema, container pode ser facilmente recriado sem impactar o resto do sistema.
+
+Além disso, isso ajuda a evitar o acúmulo de configurações desatualizadas e recursos desnecessários que possam comprometer a performance e a segurança do sistema. A arquitetura de containers efêmeros é uma das principais vantagens do uso de containers para implantação de aplicações.
+
+**Dockerfile**
+
+Para realizar esse procedimento na usa aplicação será essencial criar um arquivo chamado Dockerfile que irá descrever o passo a passo necessário para preparar o ambiente de execução da sua aplicação e a própria configuração dela.
+
+O arquivo Dockerfile é um arquivo baseado em texto sem extensão que irá conter scripts de instruções que o Docker entende e usará para criar uma imagem de container.
+
+Após ter um arquivo Dockerfile completo será necessário fazer a construção da imagem com base neste arquivo, este processo por sua vez nós chamamos de build.
 
 ## Referências
 
