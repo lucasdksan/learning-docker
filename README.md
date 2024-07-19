@@ -118,6 +118,22 @@ O arquivo Dockerfile é um arquivo baseado em texto sem extensão que irá conte
 
 Após ter um arquivo Dockerfile completo será necessário fazer a construção da imagem com base neste arquivo, este processo por sua vez nós chamamos de build.
 
+## Network
+
+A network como o próprio nome sugere são redes. Esse recurso é uma das razões pelas quais os contianers e serviços do Docker são tão poderosos, uma vez que você pode conectá-los tanto a outros containers como a cargas de trabalho que não sejam Docker.
+
+Na verdade, um container Docker nem precisa saber que está em um ambiente do Docker para executar a sua carga de trabalho. E a comunicação de rede vai funcionar da mesma forma tanto no Linux como no Windows e até mesmo misturar os dois.
+
+As redes no Docker funcionam usando drivers e por isso existem vários drivers que podem ser usados como: bridge (padrão), host, overlay, ipvlan, macvlan e none.
+
+**Bridge Network**
+
+A rede bridge é a rede padrão do Docker e é usada quando você cria um novo contêiner sem especificar explicitamente uma rede. Cada contêiner conectado a uma rede bridge recebe um endereço IP na sub-rede da bridge. Os contêineres em uma rede brigde podem se comunicar entre si diretamente e também com a rede externa por meio de uma tradução de porta feita pelo próprio Docker. Essa rede é útil para a maioria das aplicações, pois fornece isolamento entre os contêineres e permite que eles se comuniquem facilmente entre si.
+
+**Overlay Network**
+
+As redes overlay são utilizadas principalmente em ambientes distribuídos, como clusters Docker Swarm, para permitir a comunição entre contêineres em diferentes hosts. Essa rede cria uma rede virtual que abrange todos os hosts do cluster, permitindo que os contêineres em qualquer host se comuniquem diretamente com os contêineres em outros hosts. A rede overlay usa protocolos de túnel, como VXLN, para conectar os hosts e garantir que os pacotes sejam roteados corretamente entre os contêineres em diferentes máquinas.
+
 ## Referências
 
 - [Udemy](https://www.udemy.com/course/curso-docker-hcode/)
