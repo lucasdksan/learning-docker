@@ -35,7 +35,7 @@ Docker é um conjunto de produtos de plataforma como serviço que usam virtualiz
 
 O Docker elimina tarefas de configuração repetitivas e é usado em todo o ciclo de vida do desenvolvimento tornando o processo de desenvolvimento de aplicativos mais rápidos, fácil e portátil - desktop e nuvem. A plataforma abrangente de ponta a ponta do Docker inclui UIs, CLIs, APIs e segurança que são projetados para trabalhar juntos em todo o ciclo de vida de entrega do aplicatvo.
 
-**Por que usar Docker?**
+### Por que usar Docker?
 
 Docker garante que a aplicação que está rodando no ambiente de desenvolvimento irá também rodar igualmente no ambiente de testes e produção.
 
@@ -47,7 +47,7 @@ Cada contêiner é isolado, o que significa que as dependências e configuraçõ
 
 Contêineres são mais leves do que máquinas virtuais, pois compartilham o kernel do host, resultando em menor overhead. Docker permite a execução de vários contêineres em uma única máquina, otimizando a utilização de recursos e facilitando o dimensionamento horizontal.
 
-**Quando usar Docker?**
+### Quando usar Docker?
 
 * Desenvolvimento: Use Docker no desenvolvimento quando na produção estiver usando docker, quando precisar compartilhar as mesmas configurações de execução com outros desenvolvedores e quando quiser usar dependências de ambientes e versões diferentes.
 
@@ -59,23 +59,23 @@ Contêineres são mais leves do que máquinas virtuais, pois compartilham o kern
 
 O Docker usa uma arquitetura cliente-servidor, disponibilizanda por meio de uma API REST, Sockets UNIX e interface de rede. O cliente Docker envia comandos para o Docker Daemon que, por sua vez, executa a solicitação como criar um container, imagem, rede e assim por diante.
 
-**Docker Client**
+### Docker Client
 
 O cliente Docker é a principal forma usada pelos usuários de interagirem com o Docker. Ele é uma interface de linha de comando (CLI)
 
-**Docker Desktop**
+### Docker Desktop
 
 O Docker Desktop é um aplicativo que pode ser instalado em ambiente Mac, Windows ou Linux que permite interagir com o cliente Docker por meios visuais.
 
 Também ao instalar o Docker Desktop, você automaticamente já está instalado o Daemon Docker, Docker Client, Docker Compose e outras ferramentas.
 
-**Docker Registry**
+### Docker Registry
 
 Um registro do Docker é um local onde armazena imagens Docker. O Docker Hub é um registro do Docker público que qualquer pessoa pode usar.
 
 Mas támbem é possível criar ou usar serviços de registro Docker privados nos principais provedores de nuvens.
 
-**Docker Objects**
+### Docker Objects
 
 Existem vários objetos no universo do Docker, os principais são:
 
@@ -102,7 +102,7 @@ A expressão Containerize an application significa empacotar uma aplicação em 
 
 Muitas das vezes será necessário especificar além do sistema operacional, linguagem de programação e software também instalar outras dependências e realizar configurações iniciais necessárias que normalmente são esquecidas depois de um tempo que a aplicação já está funcionando em seu localhost ou produção.
 
-**Efêmeros**
+### Efêmeros
 
 Os Containers Docker precisam ser efêmeros porque isso ajuda a garantir a integridade e a portabilidade da aplicação.
 
@@ -110,7 +110,7 @@ Quando um container é projetado para ser efêmero, ele é criado e usado apenas
 
 Além disso, isso ajuda a evitar o acúmulo de configurações desatualizadas e recursos desnecessários que possam comprometer a performance e a segurança do sistema. A arquitetura de containers efêmeros é uma das principais vantagens do uso de containers para implantação de aplicações.
 
-**Dockerfile**
+### Dockerfile
 
 Para realizar esse procedimento na usa aplicação será essencial criar um arquivo chamado Dockerfile que irá descrever o passo a passo necessário para preparar o ambiente de execução da sua aplicação e a própria configuração dela.
 
@@ -126,13 +126,26 @@ Na verdade, um container Docker nem precisa saber que está em um ambiente do Do
 
 As redes no Docker funcionam usando drivers e por isso existem vários drivers que podem ser usados como: bridge (padrão), host, overlay, ipvlan, macvlan e none.
 
-**Bridge Network**
+### Bridge Network
 
 A rede bridge é a rede padrão do Docker e é usada quando você cria um novo contêiner sem especificar explicitamente uma rede. Cada contêiner conectado a uma rede bridge recebe um endereço IP na sub-rede da bridge. Os contêineres em uma rede brigde podem se comunicar entre si diretamente e também com a rede externa por meio de uma tradução de porta feita pelo próprio Docker. Essa rede é útil para a maioria das aplicações, pois fornece isolamento entre os contêineres e permite que eles se comuniquem facilmente entre si.
 
-**Overlay Network**
+### Host Network
+
+Nesta configuração, o contêiner compartilha o mesmo espaço de rede do host. Isso significa que o contêiner não terá seu próprio endereço IP isolado e utilizará diretamente o IP e as portas do host. Como resultado, os contêineres têm acesso direto à rede do host, e qualquer porta exposta no conteiner também imediatamente acessível no host. Essa abordagem é útil em casos em que você deseja que o contêiner tenha a mesma visibilidade e disponibilidade de rede que o host.
+
+### Overlay Network
 
 As redes overlay são utilizadas principalmente em ambientes distribuídos, como clusters Docker Swarm, para permitir a comunição entre contêineres em diferentes hosts. Essa rede cria uma rede virtual que abrange todos os hosts do cluster, permitindo que os contêineres em qualquer host se comuniquem diretamente com os contêineres em outros hosts. A rede overlay usa protocolos de túnel, como VXLN, para conectar os hosts e garantir que os pacotes sejam roteados corretamente entre os contêineres em diferentes máquinas.
+
+
+### Macvlan Network
+
+A rede macvlan permite que contênieres tenham endereços MAC e IPs associados a interfaces de rede físicas no host, o que lhes dá a aparência de serem dispositivos reais na rede física. Isso é útil em cenários onde você deseja que os conteineres sejam diferente acessíveis na rede, como se fossem máquinas físicas separadas. Com a rede macvlan, os contêineres podem ser configurados com IPs e MACs únicos na rede local, permitindo que eles sejam acessados como entidades independentes na rede.
+
+### None Network
+
+Quando você atribui a opção "--network=none" ao criar um contêiner, ele não terá conectividade de rede externa. Essa rede é útil quando você precisa que o contêiner execute tarefas internas sem comunicação com outras redes, como processos isolados ou depuração.
 
 ## Referências
 
