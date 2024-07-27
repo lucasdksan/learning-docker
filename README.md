@@ -11,6 +11,8 @@
 * [Imagens](#Imagens)
 * [Containers](#Containers)
 * [Containerize an application](#Containerize-an-application)
+* [Volumes](#Volumes)
+* [Compose](#Compose)
 * [Referências](#Referências)
 
 ## História
@@ -146,6 +148,34 @@ A rede macvlan permite que contênieres tenham endereços MAC e IPs associados a
 ### None Network
 
 Quando você atribui a opção "--network=none" ao criar um contêiner, ele não terá conectividade de rede externa. Essa rede é útil quando você precisa que o contêiner execute tarefas internas sem comunicação com outras redes, como processos isolados ou depuração.
+
+**Como expor portas em containers:**
+
+```bash
+docker run -d -p [porta do host]:[porta que deseja acessar dentro do container] --name [nome do container] [imagem]
+```
+
+**Como linkar Containers**
+
+```bash
+docker run -d -p [porta do host]:[porta que deseja acessar dentro do container] --link [no do container que deseja conectar] [imagem]
+```
+
+*Observação: Esse recurso ainda existe porém não é mais utilizado, pois atualmente utilizam recursos de rede*
+
+## Volumes
+
+O Volume é um mecanismo para persistir dados de um container Docker. Embora as montagens de volumes dependem da estrutura de diretório e do sistema operacional da máquina host, o volumes são totalmente gerenciados pelo Docker.
+
+Os volumes podem ser compartilhados com segurança entre vários containers, funcionam tanto com Linux como Windowns, facilitando o processo de backup de dados, podem ser armazenados em hosts remotos ou provedores de nuvem e podem ser criptografados.
+
+Além disso, os volumes geralmente são uma escolha melhor do que persistir dados na camada gerenciável de um container, porque um volume não aumenta o tamanho dos containers que o utilizam.
+
+## Compose 
+
+O Compose é uma ferramenta que serve para definir e executar aplicativos Docker que dependem de vários containers. Você pode configurar o compose usando um arquivo YAML e depois executar toda a configuração com apenas um comando.
+
+Você pode usar o compose tanto no desenvolvimento e nos testes, como também na produção e ele possui ainda comandos para gerenciar todo o ciclo de vida do seu aplicativo como: iniciar, parar, reconstruir, exibir status, transmitir a saída dos logs e executar comandos únicos.
 
 ## Referências
 
