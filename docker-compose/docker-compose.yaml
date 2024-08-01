@@ -1,9 +1,9 @@
 services:
   redis:
     image: redis:alpine
-  app:
+  aplication:
     build:
-      context: ./app
+      context: ./aplication
       dockerfile: Dockerfile
     ports:
       - 3000:3000

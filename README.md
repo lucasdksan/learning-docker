@@ -92,17 +92,65 @@ Uma imagem Docker é um objeto com acesso somente de leitura com instruções ne
 
 Embora já exista diversas imagens prontas e oficiais, ainda é possível criar suas próprias imagens. Para isso, a maneira mais fácil é usar um arquivo com o nome Dockerfile e descrever as etapas necessárias nele.
 
+
+**Lista as Imagens**
+
+```bash
+docker images
+```
+
+**"Download" de uma imagem**
+
+```bash
+docker pull [nome da imagem:versão da image]
+```
+
+**Deletar uma imagem**
+
+```bash
+docker rmi [Id da imagem]
+```
+
 ## Containers
 
 Um contêiner é uma instância executável e com permissão de alterações de uma imagem. É possível criar, iniciar, parar, mover e excluir um contêiner através da API do Docker ou CLI. Também podemos conectar um contêiner a uma ou mais redes, anexar armazenamento externo ou até mesmo criar uma nova imagem a partir do estado atual dele. 
 
 Um contêiner é iniciado sempre a partir de uma imagem e qualquer alteração em seu estado é perdida após ele ser parado de executar. Então caso queira persistir as suas alterações será necessário gravar em um volume anexado ou gerar uma nova imagem do seu contêiner.
 
+**Start de um container**
+
+```bash
+docker run [nomde do container]
+```
+
+*Observação: caso não tenha uma imagem, o docker run vai identificar a falta e fazer o download da imagem junto do container*
+
+**Listar os Containers em Execução**
+
+```bash
+docker ps
+```
+
+*Observação: Para apresentar todos os containers colocar a flag -a no final do ps*
+
+**Iniciar um Containers**
+
+```bash
+docker start [id do container]
+```
+
+**Parar um Containers**
+
+```bash
+docker stop [id do container]
+```
+
 ## Containerize an application
 
 A expressão Containerize an application significa empacotar uma aplicação em um container de software. Isso permite que a aplicação seja isolada do sistema operacional e do hardware subjacente, e possa ser facilmente movida e executada em diferentes ambientes sem comprometer sua funcionalidade. Containers são usados para garantir a consistência e a portabilidade da aplicação, facilitando a implantação, a manutenção e a escalabilidade.
 
 Muitas das vezes será necessário especificar além do sistema operacional, linguagem de programação e software também instalar outras dependências e realizar configurações iniciais necessárias que normalmente são esquecidas depois de um tempo que a aplicação já está funcionando em seu localhost ou produção.
+
 
 ### Efêmeros
 
@@ -119,6 +167,30 @@ Para realizar esse procedimento na usa aplicação será essencial criar um arqu
 O arquivo Dockerfile é um arquivo baseado em texto sem extensão que irá conter scripts de instruções que o Docker entende e usará para criar uma imagem de container.
 
 Após ter um arquivo Dockerfile completo será necessário fazer a construção da imagem com base neste arquivo, este processo por sua vez nós chamamos de build.
+
+**Estrutura do DockerFile**
+
+```Dockerfile
+FROM baseImage
+
+WORKDIR /the/workdir/path
+
+COPY source dest
+
+RUN command
+
+COPY source dest
+
+EXPOSE port
+
+CMD [ "executable" ]
+```
+
+**Iniciar um container apartir do dockerfile**
+
+```bash
+docker run -itd -p [port do hard]:[port do container] [nome da imagem]
+```
 
 ## Network
 
@@ -171,11 +243,35 @@ Os volumes podem ser compartilhados com segurança entre vários containers, fun
 
 Além disso, os volumes geralmente são uma escolha melhor do que persistir dados na camada gerenciável de um container, porque um volume não aumenta o tamanho dos containers que o utilizam.
 
+**Criando pasta onde ficará os volumes**
+
+```bash
+docker run -d -p [porta do host]:[porta que deseja acessar dentro do container] -v [caminho para chegar na pasta que vai armazenar os volumes] [imagem]
+```
+
+ou
+
+```bash
+docker run -d -p [porta do host]:[porta que deseja acessar dentro do container] -v [nome do volume]:[Rota para o local que será armazenado] [imagem]
+```
+
+**Acessar todos os comandos do volume via terminal**
+
+```bash
+docker volume --help
+```
+
 ## Compose 
 
 O Compose é uma ferramenta que serve para definir e executar aplicativos Docker que dependem de vários containers. Você pode configurar o compose usando um arquivo YAML e depois executar toda a configuração com apenas um comando.
 
 Você pode usar o compose tanto no desenvolvimento e nos testes, como também na produção e ele possui ainda comandos para gerenciar todo o ciclo de vida do seu aplicativo como: iniciar, parar, reconstruir, exibir status, transmitir a saída dos logs e executar comandos únicos.
+
+**Iniciar o Docker Compose**
+
+```bash
+docker compose up
+```
 
 ## Referências
 
