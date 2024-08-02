@@ -1,0 +1,10 @@
+services:
+  apache:
+    image: httpd
+    container_name: my_server_web_apache
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./html:/usr/local/apache2/htdocs
