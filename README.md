@@ -17,9 +17,9 @@
 
 ## História
 
-A origem do Docker está ligada à empresa dotCloud, uma plataforma como serviço (PaaS) fundada por Solomon Hykes em 2010. Hykes, juntamente com sua equipe, desenvolveu o Docker como um projeto interno para melhorar a flexibilidade e eficiência do gerenciamento de seus serviços. Em 2013, a dotCloud decidiu abrir o código do Docker e torná-lo um projeto de código aberto, o que rapidamente atraiu a atenção da comunidade de desenvolvedores.
+A origem do Docker está ligada à empresa dotCloud, uma plataforma como serviço (PaaS) fundada por Solomon Hykes em 2010. Hykes, juntamente com sua equipe, desenvolveu o Docker como um projeto interno para melhorar a flexibilidade e a eficiência no gerenciamento de seus serviços. Em 2013, a dotCloud decidiu abrir o código do Docker e torná-lo um projeto de código aberto, o que rapidamente atraiu a atenção da comunidade de desenvolvedores.
 
-* Lançamento inicial (março de 2013): Docker foi lançado como um projeto de código aberto. A ideia era simplificar a criação e gestão de contêineres, algo que já existia, mas que era complexo e não amplamente adotado.
+* Lançamento inicial (março de 2013): Docker foi lançado como um projeto de código aberto. A ideia era simplificar a criação e gestão de contêineres, algo que já existia, mas que era complexo e pouco adotado.
 
 * Crescimento da comunidade: Após o lançamento, Docker rapidamente ganhou popularidade entre desenvolvedores e empresas por facilitar a criação, compartilhamento e execução de aplicativos em diferentes ambientes de maneira consistente.
 
@@ -35,7 +35,7 @@ A origem do Docker está ligada à empresa dotCloud, uma plataforma como serviç
 
 Docker é um conjunto de produtos de plataforma como serviço que usam virtualização de nível de sistema operacional para entregar software em pacotes chamados contêineres.
 
-O Docker elimina tarefas de configuração repetitivas e é usado em todo o ciclo de vida do desenvolvimento tornando o processo de desenvolvimento de aplicativos mais rápidos, fácil e portátil - desktop e nuvem. A plataforma abrangente de ponta a ponta do Docker inclui UIs, CLIs, APIs e segurança que são projetados para trabalhar juntos em todo o ciclo de vida de entrega do aplicatvo.
+O Docker elimina tarefas de configuração repetitivas e é usado em todo o ciclo de vida do desenvolvimento, tornando o processo de desenvolvimento de aplicativos mais rápido, fácil e portátil — tanto em desktops quanto em nuvem. A plataforma abrangente de ponta a ponta do Docker inclui UIs, CLIs, APIs e segurança que são projetados para trabalhar juntos em todo o ciclo de vida de entrega do aplicatvo.
 
 ### Por que usar Docker?
 
@@ -43,7 +43,7 @@ Docker garante que a aplicação que está rodando no ambiente de desenvolviment
 
 Também é possível mudar de hospedagem ou até de nuvem (AWS, Azure, GCP e etc) e continuar executandoa a aplicação exatamente do mesmo modo.
 
-Outra vantagem é compartilhar uma aplicação que está configurada para executar em um container com outros desenvolvedores ou até publicamente com a comunidade.
+Outra vantagem é compartilhar uma aplicação que está configurada para executar em um contêiner com outros desenvolvedores ou até publicamente com a comunidade.
 
 Cada contêiner é isolado, o que significa que as dependências e configurações de uma aplicação não interferem em outras. O isolamento também proporciona uma camada adicional de segurança, limitando o impacto de vulnerabilidades em uma aplicação específica.
 
@@ -59,7 +59,7 @@ Contêineres são mais leves do que máquinas virtuais, pois compartilham o kern
 
 ![Docker](/github/arquitetura.png)
 
-O Docker usa uma arquitetura cliente-servidor, disponibilizanda por meio de uma API REST, Sockets UNIX e interface de rede. O cliente Docker envia comandos para o Docker Daemon que, por sua vez, executa a solicitação como criar um container, imagem, rede e assim por diante.
+O Docker usa uma arquitetura cliente-servidor, disponibilizada por meio de uma API REST, Sockets UNIX e interface de rede. O cliente Docker envia comandos para o Docker Daemon que, por sua vez, executa a solicitação como criar um container, imagem, rede e assim por diante.
 
 ### Docker Client
 
@@ -75,7 +75,7 @@ Também ao instalar o Docker Desktop, você automaticamente já está instalado 
 
 Um registro do Docker é um local onde armazena imagens Docker. O Docker Hub é um registro do Docker público que qualquer pessoa pode usar.
 
-Mas támbem é possível criar ou usar serviços de registro Docker privados nos principais provedores de nuvens.
+Mas também é possível criar ou usar serviços de registro Docker privados nos principais provedores de nuvem."
 
 ### Docker Objects
 
@@ -88,7 +88,7 @@ Existem vários objetos no universo do Docker, os principais são:
 
 ## Imagens
 
-Uma imagem Docker é um objeto com acesso somente de leitura com instruções necessárias para criar um container Docker. O mais comunm é uma imagem ser baseada em outras e adicionar personalizações, como por exemplo: criar uma imagem baseada na imagem do sistema operacional Ubuntu e fornecer instruções para instalar um servidor web como Nginx, uma aplicação como NestJs e executar esta aplicação.
+Uma imagem Docker é um objeto com acesso somente de leitura com instruções necessárias para criar um container Docker. O mais comum é uma imagem ser baseada em outras e adicionar personalizações, como, por exemplo: criar uma imagem baseada na imagem do sistema operacional Ubuntu e fornecer instruções para instalar um servidor web como Nginx, uma aplicação como NestJs e executar esta aplicação.
 
 Embora já exista diversas imagens prontas e oficiais, ainda é possível criar suas próprias imagens. Para isso, a maneira mais fácil é usar um arquivo com o nome Dockerfile e descrever as etapas necessárias nele.
 
@@ -113,14 +113,14 @@ docker rmi [Id da imagem]
 
 ## Containers
 
-Um contêiner é uma instância executável e com permissão de alterações de uma imagem. É possível criar, iniciar, parar, mover e excluir um contêiner através da API do Docker ou CLI. Também podemos conectar um contêiner a uma ou mais redes, anexar armazenamento externo ou até mesmo criar uma nova imagem a partir do estado atual dele. 
+Um contêiner é uma instância executável de uma imagem, com permissão para alterações. É possível criar, iniciar, parar, mover e excluir um contêiner através da API do Docker ou CLI. Também podemos conectar um contêiner a uma ou mais redes, anexar armazenamento externo ou até mesmo criar uma nova imagem a partir do estado atual dele. 
 
-Um contêiner é iniciado sempre a partir de uma imagem e qualquer alteração em seu estado é perdida após ele ser parado de executar. Então caso queira persistir as suas alterações será necessário gravar em um volume anexado ou gerar uma nova imagem do seu contêiner.
+Um contêiner é sempre iniciado a partir de uma imagem, e qualquer alteração em seu estado é perdida após ele ser parado. Então caso queira persistir as suas alterações será necessário gravar em um volume anexado ou gerar uma nova imagem do seu contêiner.
 
 **Start de um container**
 
 ```bash
-docker run [nomde do container]
+docker run [nome do container]
 ```
 
 *Observação: caso não tenha uma imagem, o docker run vai identificar a falta e fazer o download da imagem junto do container*
@@ -237,7 +237,7 @@ docker run -d -p [porta do host]:[porta que deseja acessar dentro do container] 
 
 ## Volumes
 
-O Volume é um mecanismo para persistir dados de um container Docker. Embora as montagens de volumes dependem da estrutura de diretório e do sistema operacional da máquina host, o volumes são totalmente gerenciados pelo Docker.
+O Volume é um mecanismo para persistir dados de um container Docker. Embora as montagens de volumes dependam da estrutura de diretórios e do sistema operacional da máquina host, os volumes são totalmente gerenciados pelo Docker.
 
 Os volumes podem ser compartilhados com segurança entre vários containers, funcionam tanto com Linux como Windowns, facilitando o processo de backup de dados, podem ser armazenados em hosts remotos ou provedores de nuvem e podem ser criptografados.
 
@@ -265,7 +265,7 @@ docker volume --help
 
 O Compose é uma ferramenta que serve para definir e executar aplicativos Docker que dependem de vários containers. Você pode configurar o compose usando um arquivo YAML e depois executar toda a configuração com apenas um comando.
 
-Você pode usar o compose tanto no desenvolvimento e nos testes, como também na produção e ele possui ainda comandos para gerenciar todo o ciclo de vida do seu aplicativo como: iniciar, parar, reconstruir, exibir status, transmitir a saída dos logs e executar comandos únicos.
+Você pode usar o Compose tanto no desenvolvimento e nos testes como também na produção. Ele possui ainda comandos para gerenciar todo o ciclo de vida do seu aplicativo, como: iniciar, parar, reconstruir, exibir status, transmitir a saída dos logs e executar comandos únicos.
 
 **Iniciar o Docker Compose**
 

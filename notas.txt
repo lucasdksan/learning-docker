@@ -1,0 +1,22 @@
+1. Melhores Práticas para Dockerfile
+Sugestão: Adicionar uma seção sobre melhores práticas ao criar um Dockerfile, como minimizar o número de camadas, usar imagens oficiais como base, evitar RUN com muitos comandos concatenados, e sempre limpar arquivos temporários após a instalação de dependências.
+2. Multistage Builds
+Sugestão: Incluir uma explicação sobre Multistage Builds no Dockerfile, que é uma técnica para reduzir o tamanho das imagens, utilizando diferentes estágios no mesmo Dockerfile para separar a construção da aplicação da imagem final.
+3. Docker Compose Advanced Features
+Sugestão: Detalhar funcionalidades avançadas do Docker Compose, como variáveis de ambiente, dependências entre serviços, uso de arquivos .env, e como orquestrar serviços complexos com múltiplos contêineres.
+4. Orquestração com Docker Swarm e Kubernetes
+Sugestão: Introduzir conceitos básicos sobre orquestração de contêineres com Docker Swarm e Kubernetes, explicando quando e por que usá-los, e como eles se comparam ao Docker Compose em termos de funcionalidades e escalabilidade.
+5. Segurança no Docker
+Sugestão: Adicionar uma seção sobre práticas de segurança ao usar Docker, como limitar permissões, usar usuários não privilegiados dentro dos contêineres, atualizar imagens regularmente, e proteger a API do Docker.
+6. CI/CD com Docker
+Sugestão: Abordar como integrar Docker em pipelines de CI/CD, explicando como usar Docker em ambientes de integração contínua e como ele facilita o deploy contínuo (Continuous Deployment).
+7. Logs e Monitoramento
+Sugestão: Incluir informações sobre como monitorar contêineres Docker e gerenciar logs, utilizando ferramentas como Docker Logs, Prometheus, Grafana, ou outras soluções de monitoramento e logging.
+8. Docker Networking Avançado
+Sugestão: Expandir a seção de Network para cobrir tópicos avançados como network policies, service discovery, e como configurar redes customizadas para aplicações complexas.
+9. Docker Registries Privados
+Sugestão: Detalhar como configurar e usar um registro Docker privado, como criar e gerenciar repositórios privados, e práticas para proteger as imagens armazenadas.
+10. Uso de Docker em Diferentes Ambientes (Desenvolvimento, Testes, Produção)
+Sugestão: Explorar em mais detalhes como o Docker pode ser configurado e otimizado para diferentes ambientes, incluindo dicas para desenvolvimento local, práticas para testes automatizados com Docker, e configurações de produção.
+11. Case Studies ou Exemplos Práticos
+Sugestão: Incluir estudos de caso ou exemplos práticos de como empresas ou projetos open-source utilizam Docker para resolver problemas reais, oferecendo um contexto mais aplicado ao conteúdo.
